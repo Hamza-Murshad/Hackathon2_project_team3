@@ -1,23 +1,52 @@
-# Insurance Datset
+# Healthcare Insurance Datset
+Our aim in this project is to use this dataset to understand features that impact health insurance charges. We will then use this information to build a model which can closely predict health insurance charges depending on the features identified, and stratify individuals into charge risk categories (low, moderate, high).
 
-**Project XYZ** is a comprehensive data analysis tool designed to streamline data exploration, analysis, and visualisation. The tool supports multiple data formats and provides an intuitive interface for both novice and expert data scientists.
+We will create a Dashboard in Power BI that summarises the characteristics and correlations of the dataset, breaksdown how they affect charges, and how the model can be used as a tool to predict charges for new customers.
+
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 
 ## Dataset Content
-* Describe your dataset. Choose a dataset of reasonable size to avoid exceeding the repository's maximum size of 100Gb.
+This dataset contains information on the relationship between personal attributes (age, gender, BMI, family size, smoking habits), geographic factors, and their impact on medical insurance charges.
+- The size is 55.63 kB
+- There are 1338 rows and 7 columns
+- The colums are: 
+    - **age** - the insured person's age
+    - **sex** - the sex (male/ female)
+    - **bmi** - body mass index; a ratio of the height and weight used to estimate health
+    - **chidren** - the number of children the insured has
+    - **smoker** - whether they smoke (yes/ no)
+    - **region** - what region of the USA they reside in
+    - **charges** - the he medical insurance costs incurred by the insured person
 
 
 ## Business Requirements
-* Describe your business requirements
-
+We are a health insurance provider that wants to use this data to understand, model and predict healthcare charges so that we can provide competitive quotes to potential customers.
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+* We hypothesise that all given features could impact health insurance charges, but that **age**, **bmi** and **smoker** will have the biggest influences.
+    - We will use scatter plots to correlate **age** and **bmi** with **charges**.
+    - We will us boxplots showing median **charges** based on **sex**, **smoker**, **children** and **region**.
 
 ## Project Plan
-* Outline the high-level steps taken for the analysis.
+- The data will be downloaded from [Kaggle](https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance/data), where it is hosted, and saved locally
+- The data will be uploaded into a Jupyter Notebook, where ETL will be performed as detailed below
+- A standard pipeline to explore, validate and clean the data was followed
+- The choice to add encoded features as new columns, rather than replacing the original, was taken because keeping the original helps creating for understandble plots 
+- The output of ETL will be a cleaned and transformed DataFrame, ready for exploratory data analysis (EDA) 
+* ETL:
+    - Ensure valid ranges/ values for each feature
+    - Check data types and output values are suitable
+    - Check for missing data
+    - Check for duplicated rows
+    - Understand the unique values in categorical features 
+    - Understand the spread, skewness and kurtosis in numerical features
+    - Encode categorical features for further analysis/ processing
+
+* EDA:
+    - 
+
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
 * Why did you choose the research methodologies you used?
 
