@@ -1,7 +1,7 @@
 # Healthcare Insurance Dataset
 Our aim in this project is to use this dataset to understand features that impact health insurance charges. We will then use this information to build a model which can closely predict health insurance charges depending on the features identified, and stratify individuals into charge risk categories (low, moderate, high).
 
-We will create a [Dashboard]() using Power BI that summarises the characteristics and correlations of the dataset, breaks down how they affect charges, and how the model can be used as a tool to predict charges for potential customers.
+We will create a [Dashboard](https://app.powerbi.com/links/W_866Us7AP?ctid=c233c072-135b-431d-af59-35e05babf941&pbi_source=linkShare) using Power BI that summarises the characteristics and correlations of the dataset, breaks down how they affect charges, and how the model can be used as a tool to predict charges for potential customers.
 
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
@@ -162,6 +162,8 @@ To understand what features impact **Charges** and make a model to estimate char
 
 * Copilot and ChatGPT - Helped create the predictive model
 
+* LMS 
+
 ### Content 
 
 - The text for the Home page was taken from Wikipedia Article A
@@ -171,4 +173,5 @@ To understand what features impact **Charges** and make a model to estimate char
 
 
 ## Acknowledgements (optional)
-* Thank the people who provided support through this project.
+* Thank you Vasi for providing the resources necesary to complete this Hackathon.
+* Thank you Neil for the masterclasses 
