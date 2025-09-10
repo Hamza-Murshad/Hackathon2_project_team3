@@ -105,44 +105,68 @@ To understand what features impact **Charges** and make a model to estamate char
     - Co-pilot was used to assess feature importance through linear regression coefficients and also measure the impact features had
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+* **Dashboard Pages and Content:**
+    - The dashboard has 3 pages: `Main Summary, Breakdown by Attribute, Prediction Model`
+    - In the `Main Summary` page we have as follows:
+        - Cards displaying important and valuable information. 
+        - 3 unique donut charts that shows the **Sex**, **Region** and **Children**
+        - Interactive slicers and dropdowns of the features allowing the various plots on the dashboard to change live 
+        - Scatter plot showing average of **BMI** by **Smoker**, **Age** and **Charges**
+        - Another scatter plot showing **Smoker**, **BMI** and **Charges**
+    - In the `Breakdown by Attribute` page we have as follows:
+        - A column chart showing **Median Charges** by **Smoker**
+        - A stacked column chart showing **Median Charges** by **Age**
+        - A column chart showing **Median Charges** by **Obesity**
+        - A stacked column chart Showing **Median Charges** by **BMI**
+        - A stacked column chart showing **Median Charges** by **Region**
+        - A stacked column chart showing **Median Charges** by **Children**
+        - Interactive slicers and dropdown menus of the features allowing the various plots on the dashboard to change live 
+    - In the `Prediction Model` page we have as follows:
+        - Cards showing important data
+        - Scatter chart of **Charges** by **Age** for Non-Smokers
+        - Scatter chart of **Charges** by **Age** for Non-Obese 
+        - Scatter chart of **Charges** by **Age** for Smokers and Obese
+        - Interactive slicers and dropdown menus of the features allowing the various plots on the dashboard to change live 
+
+    - Data insights were communicated using clear and intuitive visualisations and concise summaries. For technical audiences, an option to "mess" with the data was available through sliders and dropdown menus. The dashboard used interactive charts, color coding and simple metrics to highlight key findings and trends. 
 
 
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+* **Challenges Faced and Strategies:**
+    - Faced limited dataset size and features which restricted better accuracy. We addressed this by focusing on robust EDA and also clearly communicating and keeping in mind the limitations when finding trends
+    - We encounterd data quality issues such as duplicated data and inconsistent values which we resolved in the ETL
 
 
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
 - Pandas: loading CSV file; cleaning and transforming the DataFrame
+    - Example: `df = pd.read_csv("Dataset/Raw/insurance.csv")`
 - Feature Engine: Ordinal Encoder
+    - Example: `imputer = CategoricalImputer(imputation_method='frequent')`
 - Numpy: numpy.select to generate "Predicted_Costs" column
+    - Example: `df["charges"] = np.round(df["charges"], 2)`
 - Matplotlib: plot visualisations used for linear regression model
+    - Example: `plt.figure(figsize=(10,6)); plt.hist(df["charges"])`
 - Seaborn: scatter plots; box plots
-- Plotly:
+    - Example: `sns.boxplot(x="Smoker", y="Charges", data=df)`
+- Plotly: Used for interactive and 3D visualisations
+    - Example: `fig = px.scatter(df, x="Age", y="Charges", color="Sex")`
+- Scikit-learn: Used for building and evaluating an ML model
+    - Example: `kmeans = KMeans(n_clusters=3, random_state=42)`
+`df['cluster'] = kmeans.fit_predict(df[['Age', 'BMI', 'Charges']])`
 
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
 * Dashboard - we'd like to credit the [dashboard](https://app.powerbi.com/groups/me/reports/97735ba6-f5c4-4b1c-a415-73a7d9d1dce1/324ed4c8b8ee7eaeb894?experience=power-bi) created by DaniDL346 in Healthcare_Insurance which was used for inspiration
+
+* Co-pilot and ChatGPT - Helped create the predictive model
 
 ### Content 
 
 - The text for the Home page was taken from Wikipedia Article A
 - Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
 
 
 
