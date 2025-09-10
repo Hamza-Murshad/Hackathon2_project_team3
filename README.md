@@ -25,15 +25,19 @@ This dataset contains information on the relationship between personal attribute
 We are a health insurance provider that wants to use this data to understand, model and predict healthcare charges so that we can provide competitive quotes to potential customers.
 
 ## Hypothesis and how to validate?
-* We hypothesise that all given features could impact health insurance charges, but that **age**, **bmi** and **smoker** will have the biggest influences.
-    - We will use scatter plots to correlate **age** and **bmi** with **charges**.
-    - We will us boxplots showing median **charges** based on **sex**, **smoker**, **children** and **region**.
+* We hypothesise that all given features could impact health insurance charges, but that **Age**, **BMI** and **Smoker** will have the biggest influences.
+    - We will use a histogram to look at the distribution of numeric features to understand them better
+    - We will use scatter plots to correlate **Age** and **BMI** with **Charges**.
+    - We will us boxplots showing median **Charges** based on **Sex**, **Smoker**, **Children** and **Region**
+    - We will integrate each of the categorical features into our **Age** vs **Charges** scatter plot
+* 
+* We will build an interactive Dashboard that
 
 ## Project Plan
 - The data will be downloaded from [Kaggle](https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance/data), where it is hosted, and saved locally
 - The data will be uploaded into a Jupyter Notebook, where ETL will be performed as detailed below
 - A standard pipeline to explore, validate and clean the data was followed
-- The choice to add encoded features as new columns, rather than replacing the original, was taken because keeping the original helps creating for understandble plots 
+- The choice to add encoded features as a new columns, rather than replacing the original, was taken because keeping the original headings helps create more  nderstandble plots 
 - The output of ETL will be a cleaned and transformed DataFrame, ready for exploratory data analysis (EDA) 
 * ETL:
     - Ensure valid ranges/ values for each feature
@@ -46,6 +50,11 @@ We are a health insurance provider that wants to use this data to understand, mo
 
 * EDA:
     - 
+* Data Model:
+    - We built a model to predict health insurance costs for potential customers based on features found to impact **Charges** in the dataset 
+    - New column **Obese** was added using BMI scores
+    - It is a linear regression model based on **Age**, **Smoker** and **Obese**
+
 
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
 * Why did you choose the research methodologies you used?
@@ -95,6 +104,12 @@ We are a health insurance provider that wants to use this data to understand, mo
 
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+- Pandas: loading CSV file; cleaning and transforming the DataFrame
+- Feature Engine: Ordinal Encoder
+- Numpy: numpy.select to generate "Predicted_Costs" column
+- Matplotlib: plot visualisations used for linear regression model
+- Seaborn: scatter plots; box plots
+- Plotly:
 
 
 ## Credits 
