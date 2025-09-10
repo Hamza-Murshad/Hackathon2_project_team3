@@ -1,7 +1,7 @@
 # Healthcare Insurance Datset
 Our aim in this project is to use this dataset to understand features that impact health insurance charges. We will then use this information to build a model which can closely predict health insurance charges depending on the features identified, and stratify individuals into charge risk categories (low, moderate, high).
 
-We will create a Dashboard in Power BI that summarises the characteristics and correlations of the dataset, breaksdown how they affect charges, and how the model can be used as a tool to predict charges for new customers.
+We will create a [Dashboard]() using Power BI that summarises the characteristics and correlations of the dataset, breaksdown how they affect charges, and how the model can be used as a tool to predict charges for potential customers.
 
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
@@ -25,15 +25,18 @@ This dataset contains information on the relationship between personal attribute
 We are a health insurance provider that wants to use this data to understand, model and predict healthcare charges so that we can provide competitive quotes to potential customers.
 
 ## Hypothesis and how to validate?
-* We hypothesise that all given features could impact health insurance charges, but that **age**, **bmi** and **smoker** will have the biggest influences.
-    - We will use scatter plots to correlate **age** and **bmi** with **charges**.
-    - We will us boxplots showing median **charges** based on **sex**, **smoker**, **children** and **region**.
+* We hypothesise that all given features could impact health insurance charges, but that **Age**, **BMI** and **Smoker** will have the biggest influences.
+    - We will use a histogram to look at the distribution of numeric features to understand them better
+    - We will use scatter plots to correlate **Age** and **BMI** with **Charges**.
+    - We will us boxplots showing median **Charges** based on **Sex**, **Smoker**, **Children** and **Region**
+    - We will integrate each of the categorical features into our **Age** vs **Charges** scatter plot
+*
 
 ## Project Plan
 - The data will be downloaded from [Kaggle](https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance/data), where it is hosted, and saved locally
 - The data will be uploaded into a Jupyter Notebook, where ETL will be performed as detailed below
 - A standard pipeline to explore, validate and clean the data was followed
-- The choice to add encoded features as new columns, rather than replacing the original, was taken because keeping the original helps creating for understandble plots 
+- The choice to add encoded features as a new columns, rather than replacing the original, was taken because keeping the original headings helps create more  nderstandble plots 
 - The output of ETL will be a cleaned and transformed DataFrame, ready for exploratory data analysis (EDA) 
 * ETL:
     - Ensure valid ranges/ values for each feature
@@ -43,15 +46,31 @@ We are a health insurance provider that wants to use this data to understand, mo
     - Understand the unique values in categorical features 
     - Understand the spread, skewness and kurtosis in numerical features
     - Encode categorical features for further analysis/ processing
-
 * EDA:
     - 
+    - DataFrame with new column **BMI_Cat** saved as df_transformed_1.csv in new folder Dataset/Transformed  
+* Data Model:
+    - We built a model to predict health insurance costs for potential customers based on features found to impact **Charges** in the dataset 
+    - New column **Obese** was added using BMI scores
+    - It is a linear regression model based on **Age**, **Smoker** and **Obese**
+    - DataFrame with new columns **Obese** and **Predicted_Cost** saved as df_model.csv in new folder Dataset/Model  
 
 * How was the data managed throughout the collection, processing, analysis and interpretation steps?
 * Why did you choose the research methodologies you used?
 
 ## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+To understand what features impact **Charges** and make a model to estamate charges for potential customers:
+- Each feature was visualised with respect to **Charges**
+    - Continuous data using scatter plots
+    - Categorical data using box plots
+- Correlations were found with **Age**, **Smoker** and **BMI**
+    - These features were visualised together with **Charges** to confirm impact
+    - Feahtures were found to separate the data into 3 main groups
+    - Correlation matrix used to visualise the features which correlate with **Charges**
+    - Analysis to quantify features with most impact on **Charges** conducted
+- Features used to make linear regression model
+    - 3 scatter plots used, one for each group, to find the linear equation and R^2 which explains variation in **Charges** 
+    - A scatter plot to show **Charges** vs. **Predicted_Cost** with R^2 used to assess how well the model explains the data
 
 ## Analysis techniques used
 * List the data analysis methods used and explain limitations or alternative approaches.
@@ -78,29 +97,23 @@ We are a health insurance provider that wants to use this data to understand, mo
 * What challenges did you face, and what strategies were used to overcome these challenges?
 * What new skills or tools do you plan to learn next based on your project experience? 
 
-## Deployment
-### Heroku
-
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
-
 
 ## Main Data Analysis Libraries
 * Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+- Pandas: loading CSV file; cleaning and transforming the DataFrame
+- Feature Engine: Ordinal Encoder
+- Numpy: numpy.select to generate "Predicted_Costs" column
+- Matplotlib: plot visualisations used for linear regression model
+- Seaborn: scatter plots; box plots
+- Plotly:
 
 
 ## Credits 
 
 * In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
 * You can break the credits section up into Content and Media, depending on what you have included in your project. 
+
+* Dashboard - we'd like to credit the [dashboard](https://app.powerbi.com/groups/me/reports/97735ba6-f5c4-4b1c-a415-73a7d9d1dce1/324ed4c8b8ee7eaeb894?experience=power-bi) created by DaniDL346 in Healthcare_Insurance which was used for inspiration
 
 ### Content 
 
