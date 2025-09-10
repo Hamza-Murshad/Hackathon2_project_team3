@@ -8,7 +8,7 @@ We will create a [Dashboard]() using Power BI that summarises the characteristic
 
 
 ## Dataset Content
-This dataset contains information on the relationship between personal attributes (age, gender, BMI, family size, smoking habits), geographic factors, and their impact on medical insurance charges.
+This [dataset](https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance) contains information on the relationship between personal attributes (age, gender, BMI, family size, smoking habits), geographic factors, and their impact on medical insurance charges.
 - The size is 55.63 kB
 - There are 1338 rows and 7 columns
 - The colums are: 
@@ -38,25 +38,36 @@ We are a health insurance provider that wants to use this data to understand, mo
 - A standard pipeline to explore, validate and clean the data was followed
 - The choice to add encoded features as a new columns, rather than replacing the original, was taken because keeping the original headings helps create more  nderstandble plots 
 - The output of ETL will be a cleaned and transformed DataFrame, ready for exploratory data analysis (EDA) 
-* ETL:
-    - Ensure valid ranges/ values for each feature
-    - Check data types and output values are suitable
-    - Check for missing data
-    - Check for duplicated rows
-    - Understand the unique values in categorical features 
-    - Understand the spread, skewness and kurtosis in numerical features
-    - Encode categorical features for further analysis/ processing
-* EDA:
-    - 
+* **ETL:**
+    - Ensured valid ranges/ values for each feature
+    - Checked data types and output values are suitable
+    - Checked for missing data
+    - Checked for duplicated rows
+    - Understood the unique values in categorical features 
+    - Understood the spread, skewness and kurtosis in numerical features
+    - Encoded categorical features for further analysis/ processing
+* **EDA:**
+    - Loaded and explored the cleaned insurance dataset
+    - Visualised distributions of different variables: **Charges**, **Age**, **BMI**, and **Children**
+    - Investigated relationships between Charges and other factors such as **Smoker/Non-Smoker**, **BMI**, **Age**, **Regin**, and **Children**.
+    - Categorised **BMI** into 4 unqiue classes `(Underweight, Normal, Overweight, Obese)` and compared charges across these categories  
+    - Used various plots like histograms, box plots, scatter plots and heatmaps to identify trends and correlations. 
+    - Provided interpretations for outliers and category impacts to support further analysis. 
     - DataFrame with new column **BMI_Cat** saved as df_transformed_1.csv in new folder Dataset/Transformed  
-* Data Model:
+* **Data Model:**
     - We built a model to predict health insurance costs for potential customers based on features found to impact **Charges** in the dataset 
     - New column **Obese** was added using BMI scores
     - It is a linear regression model based on **Age**, **Smoker** and **Obese**
     - DataFrame with new columns **Obese** and **Predicted_Cost** saved as df_model.csv in new folder Dataset/Model  
+* **Data Visualisations:**
+    - Created clear and informtive visualisations to highight key patterns in the dataset
+    - Explord the impact of **Smoker/Non-Smoker**, **BMI**, **Age**, **Sex** and **Region** on Charges using various plots
+    - Used side by side, box, violoin, scatter and 3d plots to find trends
+    - Investigated further relationships between each factor rather than just against charges to reveal patterns
+    - Summarised findings with group statisctics to support visual insights
 
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
+* **Why we chose the methodologies we used:**
+    - We selected chose these methodologies to produce a thorough analysis of the insurance dataset. In **ETL** we used processes which guranteed data quality (through cleaning) and consistency for further analysis in out other notebooks. **EDA** allowed us to understand the structure, distributions and relationships within the dataset which guided ur focus towards the most influential factors. For **Data Visualisation** we used a variety of plots to clearly show the constant trends through the dataset for both technical and non-technical aduiences. This multi-step approach ensured that our findings were evaluated seamlessly and were actionalble for business decision-making. 
 
 ## The rationale to map the business requirements to the Data Visualisations
 To understand what features impact **Charges** and make a model to estamate charges for potential customers:
@@ -68,19 +79,30 @@ To understand what features impact **Charges** and make a model to estamate char
     - Feahtures were found to separate the data into 3 main groups
     - Correlation matrix used to visualise the features which correlate with **Charges**
     - Analysis to quantify features with most impact on **Charges** conducted
+    - We highlighted the importance of visualising both individual and combined effects of the features
 - Features used to make linear regression model
     - 3 scatter plots used, one for each group, to find the linear equation and R^2 which explains variation in **Charges** 
     - A scatter plot to show **Charges** vs. **Predicted_Cost** with R^2 used to assess how well the model explains the data
 
 ## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+* **Analysis Methods used:**
+    - Used descriptive statistics
+    - Data cleaning techniques to handle missing values, duplicates and inconsistent data
+    - Encoding of categorical variables for analysis and visualisation
+    - EDA using visualisations to find trends and correlations. 
+    - Correlations analysis to find trends between each variable
+    - Linear regression modelling to predict charges 
+* **Limitations:**
+    - Dataset was relatively small (only 1338 rows)
+    - Limited set of features recorded in dataset 
+    - Having access to other factors could improve model accuracy
 
-## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+* **How we structured the data analysis:**
+    - It was structured in a logical sequence: ETL for data quality, EDA and data visualisations to explore and find patterns and modelling to predict further data. 
+
+* **How we used generative tools to help:**
+    - We used generative tools such as co-pilot and ChatGPT to help create a model for predicting charges
+    - Co-pilot was used to assess feature importance through linear regression coefficients and also measure the impact features had
 
 ## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
@@ -88,10 +110,6 @@ To understand what features impact **Charges** and make a model to estamate char
 * How were data insights communicated to technical and non-technical audiences?
 * Explain how the dashboard was designed to communicate complex data insights to different audiences. 
 
-## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
 
 ## Development Roadmap
 * What challenges did you face, and what strategies were used to overcome these challenges?
